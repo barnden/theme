@@ -1,0 +1,161 @@
+%headings {
+    &:has(a.header-anchor) {
+        position: relative;
+        margin-left: 2rem;
+    }
+
+    & a.header-anchor {
+        position: absolute;
+        left: -1.5rem;
+        top: -.125ex;
+        text-underline-offset: .5ex;
+    }
+
+    // @include media-breakpoint-up(md) {
+        &:has(a.header-anchor) {
+            margin-left: 0rem;
+        }
+    // }
+}
+
+@for $i from 1 through 6 {
+    h#{$i}:has(a.header-anchor) {
+        counter-increment: h#{$i} 1;
+    }
+}
+
+// @include media-breakpoint-up(md) {
+
+    aside:has(ul.contents),
+    aside.sticky {
+        position: sticky;
+        top: 1rem;
+        display: block;
+        height: calc(100vh - 9rem);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+// }
+
+h2:has(a.header-anchor):before {
+    content: counter(h2) ".";
+}
+
+h3:has(a.header-anchor):before {
+    content: counter(h2) "." counter(h3) ".";
+}
+
+h4:has(a.header-anchor):before {
+    content: counter(h2) "." counter(h3) "." counter(h4) ".";
+}
+
+aside ul.nav {
+    flex-wrap: nowrap;
+}
+
+ul.contents {
+    & li {
+        & {
+            margin: 0 .5ex;
+        }
+
+        a {
+            text-decoration: none;
+            padding: .5ex;
+            border-radius: 4px;
+
+            &:hover {
+                background: var(--link-color);
+                color: var(--background);
+            }
+        }
+    }
+
+    & ul {
+        & {
+            padding: 0 0 0 1rem;
+        }
+
+        &>li {
+            border-left: 2px solid var(--border-color);
+            padding-left: calc(1.5ex - 2px);
+            margin-left: calc(-1.5ex - 2px);
+        }
+    }
+
+    & a.nav-link {
+        padding: 2px 4px;
+        color: var(--link-color);
+
+        & p {
+            margin: 0 !important;
+            padding: 0;
+        }
+    }
+
+    &,
+    & * {
+        list-style-type: none;
+    }
+
+    details {
+        & summary {
+            position: relative;
+        }
+
+        & summary::-webkit-details-marker {
+            display: none;
+        }
+
+        &>summary:before {
+            font-family: var(--monospace);
+            position: absolute;
+            left: -1.75em;
+            top: .1ex;
+            content: "[-]";
+            color: var(--black-170)
+        }
+
+        &[open]>summary:before {
+            content: "[+]";
+        }
+
+    }
+}
+
+ul.body-contents li {
+    & p {
+        display: inline;
+        margin: 0 !important;
+        padding: 0;
+    }
+
+    & a.disabled {
+        text-decoration: none;
+        color: var(--black-140);
+    }
+}
+
+.breadcrumbs {
+    & {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    & span.crumb {
+        & p {
+            display: inline;
+            margin: 0;
+            padding: 0;
+        }
+
+        &:not(:first-child):before {
+            content: '/';
+
+            margin-left: .5ex;
+
+            color: var(--foreground);
+            text-decoration: none;
+        }
+    }
+}
