@@ -71,3 +71,29 @@ body > .content {
         grid-row: 1;
     }
 }
+
+footer {
+    & {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        height: 8rem;
+        border-top: 1px solid var(--border-color);
+
+        font-size: .95rem;
+    }
+
+    .copyright {
+        font-size: .8rem;
+    }
+
+    ul {
+        list-style-type: none;
+
+        li {
+            padding: .5ex 0;
+        }
+    }
+}
