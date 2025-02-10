@@ -101,9 +101,9 @@ export default function (md) {
                 parsedContent = content
                     .replaceAll(/(?<!(?:\w|#.*|\\))(break|continue|while|def|function|return|yield|then|not|is|or|for\ all|for|if|else|in|of|do)(?!\w)/g, "**$1**")
                     .replaceAll(/(\s+)\:=(\s+)/g, "$1$$\\leftarrow$$$2")
-                    .replaceAll(/(^|\s)\#(.*)/g, `$1*\\# $2*{style="color: var(--bs-tertiary-color);font-style: normal;"}`)
-                    .replaceAll(/(?<!(?:\w|#.*|\\))(true|false|undefined)(?!\w)/g, `*$1*{style="color: var(--bs-blue);font-style: normal;"}`)
-                    .replaceAll(/(?<!(?:\w|#.*|\\))(<>)(?!\w)/g, `*$1*{style="color: var(--bs-green);font-style: normal;"}`)
+                    .replaceAll(/(^|\s)\#(.*)/g, `$1*\\# $2*{style="color: var(--black-140);font-style: normal;"}`)
+                    .replaceAll(/(?<!(?:\w|#.*|\\))(true|false|undefined)(?!\w)/g, `*$1*{style="color: var(--blue);font-style: normal;"}`)
+                    .replaceAll(/(?<!(?:\w|#.*|\\))(<>)(?!\w)/g, `*$1*{style="color: var(--green);font-style: normal;"}`)
                 break
         }
 
