@@ -1,4 +1,6 @@
-%headings {
+@use "variables" as v;
+
+@include v.headings {
     &:has(a.header-anchor) {
         position: relative;
         margin-left: 2rem;
@@ -12,9 +14,10 @@
     }
 
     // @include media-breakpoint-up(md) {
-        &:has(a.header-anchor) {
-            margin-left: 0rem;
-        }
+    &:has(a.header-anchor) {
+        margin-left: 0rem;
+    }
+
     // }
 }
 
@@ -26,15 +29,16 @@
 
 // @include media-breakpoint-up(md) {
 
-    aside:has(ul.contents),
-    aside.sticky {
-        position: sticky;
-        top: 1rem;
-        display: block;
-        height: calc(100vh - 9rem);
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
+aside:has(ul.contents),
+aside.sticky {
+    position: sticky;
+    top: 1rem;
+    display: block;
+    height: calc(100vh - 9rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 // }
 
 h2:has(a.header-anchor):before {
