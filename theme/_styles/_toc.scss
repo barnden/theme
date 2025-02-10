@@ -61,18 +61,21 @@ ul.contents {
     & li {
         & {
             margin: 0 .5ex;
+            padding: .5ex 0;
+        }
+
+        &.brand {
+            font-size: 1.5rem;
         }
 
         a {
-            text-decoration: none;
             padding: .5ex;
             border-radius: 4px;
-
-            &:hover {
-                background: var(--link-color);
-                color: var(--background);
-            }
         }
+    }
+
+    & details ul {
+        margin-top: 1ex;
     }
 
     & ul {
@@ -89,7 +92,6 @@ ul.contents {
 
     & a.nav-link {
         padding: 2px 4px;
-        color: var(--link-color);
 
         & p {
             margin: 0 !important;
