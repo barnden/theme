@@ -1,0 +1,11 @@
+{% extends "./base.njk" %}
+
+{% block main %}
+{{ content | safe }}
+{% endblock %}
+
+{% if showToC %}
+{% block right %}
+{{ content | toc | safe }}
+{% endblock %}
+{% endif %}

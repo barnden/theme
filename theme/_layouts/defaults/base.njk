@@ -1,0 +1,27 @@
+{% set contentRight %}{% block right %}{% endblock %}{% endset %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "../partials/head.njk" %}
+</head>
+<body>
+    <div class="content">
+        {% include "../partials/nav.njk" %}
+
+        <main aria-label="Content">
+            {% block main %}{% endblock %}
+        </main>
+
+        {% if contentRight %}
+        <aside>
+        {{ contentRight | safe }}
+        </aside>
+        {% endif %}
+
+        <div id="return-to-top"></div>
+    </div>
+
+    {% include "../partials/footer.njk" %}
+</body>
+</html>

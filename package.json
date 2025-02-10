@@ -1,0 +1,28 @@
+{
+  "name": "book11ty",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@vscode/markdown-it-katex": "^1.1.1",
+    "bootstrap": "^5.3.3",
+    "glob": "^11.0.0",
+    "markdown-it-abbr": "^2.0.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-attrs": "^4.3.1",
+    "markdown-it-footnote": "^4.0.0",
+    "markdown-it-ins": "^4.0.0",
+    "sass": "^1.83.0"
+  },
+  "devDependencies": {
+    "shiki": "^1.24.4"
+  }
+}

@@ -1,0 +1,9 @@
+<aside>
+    <ul class="navbar-nav justify-content-end">
+        {% for item in site.navbar %}
+        <li class="nav-item">
+            <a href="{{ item.url }}" class="nav-link {% if activeNav == item.title %}active{% endif %}">{{ item.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</aside>

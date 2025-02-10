@@ -1,0 +1,17 @@
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{{ title }} | {{ site.title }}</title>
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ title }}">
+<meta name="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+
+{% if math %}
+<link rel="stylesheet" href="https://static.nguyen.vc/KaTeX/katex.min.css">
+{% endif %}
+
+<link rel="stylesheet" href="/assets/bundle.css">

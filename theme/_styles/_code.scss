@@ -1,0 +1,69 @@
+@use "variables" as v;
+
+code {
+    font-family: v.$monospace;
+}
+
+code:not(:has(span.line)) {
+    background: var(--black-50);
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 1px solid var(--black-120);
+}
+
+pre.shiki {
+    background: rgba(38, 35, 53, 50%) !important;
+    border: 1px solid var(--border-color);
+    padding: 1ex 0;
+    border-radius: 6px;
+
+    code {
+        & {
+            counter-reset: line;
+            counter-increment: line 0;
+        }
+
+        span.line {
+            position: relative;
+            width: 100%;
+            display: inline-block;
+
+            &:before {
+                content: " ";
+                margin-right: 1ex;
+            }
+
+            // @include media-breakpoint-up(md) {
+                &:before {
+                    content: counter(line);
+                    counter-increment: line;
+                    border-right: 1px solid var(--border-color);
+
+                    opacity: .5;
+
+                    width: 3.25em;
+                    margin-right: 2ex;
+                    padding-right: 2ex;
+
+                    display: inline-block;
+                    text-align: right;
+                }
+            // }
+
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                opacity: .05;
+            }
+
+            &:hover:after {
+                background-color: white;
+            }
+        }
+    }
+}

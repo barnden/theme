@@ -1,0 +1,28 @@
+{
+    "url": "https://nguyen.vc",
+    "title": "Example Site",
+    "copyright": "2020-2025 brandon g. nguyen",
+    "navbar": [
+        {
+            "title": "home",
+            "url": "/"
+        },
+        {
+            "title": "blog",
+            "url": "/blog"
+        },
+        {
+            "title": "notes",
+            "url": "/notes"
+        },
+        {
+            "title": "projects",
+            "url": "/projects"
+        }
+    ],
+    "contact": {
+        "email": {
+            "primary": "brandon@nguyen.vc"
+        }
+    }
+}

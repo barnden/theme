@@ -1,0 +1,36 @@
+@use "sass:color";
+@use 'sass:math';
+
+$colors: (
+    "black": hsl(240, 12%, 8%),
+    "white": hsl(222, 19%, 89%),
+    "blue": hsl(210, 35%, 48%),
+    "indigo": #6610f2,
+    "purple": #6f42c1,
+    "pink": #d63384,
+    "red": hsl(350, 43%, 45%),
+    "orange": hsl(13, 60%, 61%),
+    "yellow": hsl(45, 78%, 59%),
+    "green": hsl(162, 69%, 39%),
+    "teal": #20c997,
+    "cyan": hsl(182, 51%, 64%),
+);
+
+:root {
+    @each $name, $color in $colors {
+        $normalized_color: color.to-space($color, oklch);
+        --#{$name}: #{$normalized_color};
+        --#{$name}-100: #{$normalized_color};
+
+        @each $level in 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 {
+            $percentage: math.percentage(math.div($level, 100));
+            $lightened: color.scale($normalized_color, $lightness: $percentage);
+            $darkened: color.scale($normalized_color, $lightness: -$percentage);
+
+            --#{$name}-#{100 + $level}: #{$lightened};
+            --#{$name}-#{100 - $level}: #{$darkened};
+        }
+    }
+
+    --border-color: var(--black-130);
+}

@@ -1,0 +1,73 @@
+@use "./fonts/Charter.scss";
+@use "./fonts/FantasqueSans.scss";
+@use "./fonts/Lora.scss";
+
+
+@use "variables" as v;
+@use "katex";
+@use "code";
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+:root {
+    font-size: 16px;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+
+    font-family: v.$serif;
+
+    --background: var(--black);
+    --foreground: var(--white);
+
+    color: var(--foreground);
+    background: var(--background);
+}
+
+a {
+    text-decoration: none;
+    color: var(--blue-140);
+
+    &:hover {
+        text-decoration: underline;
+        color: var(--blue-180)
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.flex.justify-center {
+    justify-content: center;
+}
+
+body > .content {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-rows: minmax(100px, auto);
+    gap: 1rem;
+
+    & aside:not(:first-child) {
+        grid-column: 10 / 12;
+        grid-row: 1;
+    }
+
+    & aside:first-child {
+        grid-column: 1 / 3;
+        grid-row: 1;
+    }
+
+    & main {
+        grid-column: 4 / 9;
+        grid-row: 1;
+
+    }
+}

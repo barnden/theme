@@ -1,0 +1,1 @@
+export default "defaults/content.njk"
