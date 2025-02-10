@@ -93,7 +93,7 @@ export default async function (eleventyConfig, options) {
 
         const result = []
 
-        result.push(`<ul class="contents flex-column">`)
+        result.push(`<ul class="contents">`)
         result.push(...roots.map(heading => createEntry(heading, true)))
         result.push("</ul>")
 
