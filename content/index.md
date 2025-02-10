@@ -57,7 +57,38 @@ eleventyConfig.addPlugin(assets, {
 })
 ```
 
-Nulla `ac magna` sit amet libero interdum ultrices. Fusce vel dictum eros, et venenatis lacus. Aenean eu consectetur turpis. Quisque vitae tincidunt dolor. Morbi et enim massa. Donec vel lorem velit. Ut pulvinar neque sit amet tortor eleifend, quis aliquet magna porttitor. Curabitur convallis ut nulla vel dignissim. Sed venenatis turpis eget tincidunt tempor. Sed sit amet purus ut justo pharetra tincidunt dictum et eros.
+Nulla `ac magna` sit amet libero interdum ultrices. Fusce vel dictum eros, et `venenatis` lacus.
+
+## Blocks
+
+### Color Block
++++red Red
+Aenean eu consectetur turpis. Quisque vitae tincidunt dolor. Morbi et enim massa. Donec vel lorem velit. Ut pulvinar neque sit amet tortor eleifend, quis aliquet magna porttitor. Curabitur convallis ut nulla vel dignissim. Sed venenatis turpis eget tincidunt tempor. Sed sit amet purus ut justo pharetra tincidunt dictum et eros.
++++
+
+### Quote
+> And now I see with eye serene
+>
+> The very pulse of the machine
+
+### Algorithm Pseudocode
+
++++algorithm Montgomery Ladder
+- # Inputs: base $g$, binary expansion $A = \{A_i\}_{i=0}^{m}$ of $g$
+- function MontgomeryLadder($g$, $A$)
+    - $x_1$ := $g$
+    - $x_2$ := $g^2$
+    - &nbsp;
+    - for $i$ in $\{m - 2, \dots, 0\}$ do
+        - if $A_i \equiv 0$ then
+            - $x_2$ := $x_1 * x_2$
+            - $x_1$ := $x_1^2$
+        - else
+            - $x_1$ := $x_1 * x_2$
+            - $x_2$ := $x_2^2$
+    - &nbsp;
+    - return $x_1$
++++
 
 ## Phasellus eu dictum felis
 
