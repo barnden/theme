@@ -2,6 +2,8 @@
 
 code {
     font-family: v.$monospace;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 code:not(:has(span.line)) {
@@ -11,29 +13,46 @@ code:not(:has(span.line)) {
     border: 1px solid var(--black-120);
 }
 
-pre.shiki {
-    background: rgba(38, 35, 53, 50%) !important;
-    border: 1px solid var(--border-color);
-    padding: 1ex 0;
-    border-radius: 6px;
+pre {
+    & {
+        display: block;
+        overflow: auto;
+        margin-top: 0;
+        margin-bottom: 1em;
+        font-size: 1rem;
+    }
 
-    code {
+    &.shiki {
         & {
-            counter-reset: line;
-            counter-increment: line 0;
+            padding: 1ex 0;
+
+            background: rgba(38, 35, 53, 50%) !important;
+
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+
+            line-height: 1em;
         }
 
-        span.line {
-            position: relative;
-            width: 100%;
-            display: inline-block;
-
-            &:before {
-                content: " ";
-                margin-right: 1ex;
+        code {
+            & {
+                counter-reset: line;
+                counter-increment: line 0;
             }
 
-            // @include media-breakpoint-up(md) {
+            span.line {
+                & {
+                    position: relative;
+                    width: 100%;
+                    display: inline-block;
+                }
+
+                &:before {
+                    content: " ";
+                    margin-right: 1ex;
+                }
+
+                // @include media-breakpoint-up(md) {
                 &:before {
                     content: counter(line);
                     counter-increment: line;
@@ -43,26 +62,28 @@ pre.shiki {
 
                     width: 3.25em;
                     margin-right: 2ex;
-                    padding-right: 2ex;
+                    padding: 0.075em 2ex 0.075em 0;
 
                     display: inline-block;
                     text-align: right;
                 }
-            // }
 
-            &:after {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                pointer-events: none;
-                opacity: .05;
-            }
+                // }
 
-            &:hover:after {
-                background-color: white;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    pointer-events: none;
+                    opacity: .05;
+                }
+
+                &:hover:after {
+                    background-color: white;
+                }
             }
         }
     }
