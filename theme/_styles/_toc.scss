@@ -58,6 +58,10 @@ aside ul.nav {
 }
 
 ul.contents {
+    &.nav {
+        padding: 0;
+    }
+
     & li {
         & {
             margin: 0 .5ex;
@@ -69,7 +73,7 @@ ul.contents {
         }
 
         a {
-            padding: .5ex;
+            margin: 0;
             border-radius: 4px;
         }
     }
@@ -80,20 +84,25 @@ ul.contents {
 
     & ul {
         & {
-            padding: 0 0 0 1rem;
+            padding: 0;
         }
 
         &>li {
             border-left: 2px solid var(--border-color);
-            padding-left: calc(1.5ex - 2px);
-            margin-left: calc(-1.5ex - 2px);
+            padding-left: calc(2ex - 2px);
+            margin-left: calc(-2ex - 2px);
+
+            &:hover {
+                border-left: 2px solid white;
+                transition: all 0.125s linear;
+            }
         }
     }
 
     & a.nav-link {
         padding: 2px 4px;
 
-        & p {
+        &, & p {
             margin: 0 !important;
             padding: 0;
         }

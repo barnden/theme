@@ -93,7 +93,8 @@ export default async function (eleventyConfig, options) {
 
         const result = []
 
-        result.push(`<ul class="contents">`)
+        result.push(`<ul id="toc" class="contents">`)
+        result.push('<li class="title">Contents</li>')
         result.push(...roots.map(heading => createEntry(heading, true)))
         result.push("</ul>")
 
