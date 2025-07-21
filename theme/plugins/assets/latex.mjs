@@ -8,7 +8,7 @@ import { exec } from "node:child_process"
 
 const run = util.promisify(exec)
 
-async function renderSVG(file, options) {
+export async function renderSVG(file, options) {
     file = path.normalize(file)
     const { name, dir } = path.parse(file)
 
@@ -28,19 +28,19 @@ async function renderSVG(file, options) {
     }
 
     console.log(`[latex] Rendering ${file}`)
-
+    
     // FIXME: Tested only on macOS 15.3
     const regex = Object.entries(options?.sed?.substitutions ?? {}).map(([pattern, replace]) => `s:${pattern}:${replace.startsWith('--') ? "var(" + replace + ")" : replace}:g`).join(";")
-
+    
     const libgs = options.dvisvgm?.libgs ? `LIBGS=${options.dvisvgm.libgs}` : ""
     const dvi = path.join(options.tempPath, `${name}.dvi`)
     const pdflatex = `latex -output-directory=${options.tempPath} ${file}`
     const dvisvgm = `${libgs} dvisvgm --exact --no-font --output="${outdir}/%f" "${dvi}"`
     const sed = `${options.sed?.gsed ? "g" : ""}sed -i '${regex}' "${svg}"`
-
+    
     try {
         await fs.mkdir(outdir, { recursive: true }, err => err ? console.error(err) : null)
-
+        
         await run(pdflatex)
         await run(dvisvgm)
         await run(sed)
@@ -81,14 +81,14 @@ export default async function (eleventyConfig, options) {
 
             if (!minimatch(normalizedFile, pattern))
                 continue
-            
+
             if (!paths.has(file)) {
                 paths.add(file)
                 addPassthrough(normalizedFile)
 
                 continue
             }
-            
+
             await renderSVG(normalizedFile, options)
         }
     })

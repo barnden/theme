@@ -17,7 +17,7 @@ export const config = {
 }
 
 export default function (eleventyConfig) {
-    eleventyConfig.addPlugin(assets, {
+    const assetConfig = {
         assets: {
             assetPath: "assets",
             generatedPath: "__generated",
@@ -46,12 +46,14 @@ export default function (eleventyConfig) {
         staticAssets: {
             fileExts: ["vs", "fs", "glsl", "js", "svg", "css"],
         }
-    })
+    }
+
+    eleventyConfig.addPlugin(assets, assetConfig)
 
     eleventyConfig.addPlugin(markdown, { anchor: { level: 2 } })
     eleventyConfig.addPlugin(shiki, { theme: "synthwave-84" })
     eleventyConfig.addPlugin(filters)
-    eleventyConfig.addPlugin(shortcode)
+    eleventyConfig.addPlugin(shortcode, { svg: { ...assetConfig.assets, ...assetConfig.latex } })
 
     eleventyConfig.addPlugin(EleventyRenderPlugin)
     eleventyConfig.addPlugin(InputPathToUrlTransformPlugin)
