@@ -93,10 +93,12 @@ export default function (md) {
         let parsedContent = content
 
         const args = info.split(' ')
-        const type = args[0]
-        const title = args.slice(1).join(' ')
+        const classes = args[0].replaceAll('.', ' ')
+        const type = classes[0]
+        const title = md.render(args.slice(1).join(' ')).trim()
 
         switch (type) {
+            // TODO: Add anchors and references for theorems, lemma, proof, etc. blocks.
             case "algorithm":
                 parsedContent = content
                     .replaceAll(/(?<!(?:\w|#.*|\\))(break|continue|while|def|function|return|yield|then|not|is|or|for\ all|for|if|else|in|of|do)(?!\w)/g, "**$1**")
@@ -105,8 +107,18 @@ export default function (md) {
                     .replaceAll(/(?<!(?:\w|#.*|\\))(true|false|undefined)(?!\w)/g, `*$1*{style="color: var(--blue);font-style: normal;"}`)
                     .replaceAll(/(?<!(?:\w|#.*|\\))(<>)(?!\w)/g, `*$1*{style="color: var(--green);font-style: normal;"}`)
                 break
+
+            default:
+                break
         }
 
-        return `<div class="bgn-block ${type.replaceAll('.', ' ')}"><h4>${md.render(title)}</h4><div>${md.render(parsedContent)}</div></div>`
+        let result = `<div class="bgn-block ${classes}">`
+
+        if (title.length > 0)
+            result += `<h4>${title}</h4>`
+        
+        result += `<div>${md.render(parsedContent)}</div></div>`
+
+        return result
     }
 }
