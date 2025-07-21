@@ -1,15 +1,29 @@
 @use "sass:map";
 @use "sass:color";
 @use "variables" as v;
+@use "breakpoints";
+
+.bgn-block,
+blockquote {
+    --border-thickness: .65ex;
+    --border-offset: 0ex;
+    --border-color: var(--blue);
+    --background-color: var(--border-color);
+}
+
+
+
+@include breakpoints.at_least_md {
+
+    .bgn-block,
+    blockquote {
+        --border-offset: 2ex;
+    }
+}
 
 .bgn-block,
 blockquote {
     & {
-        --border-thickness: .65ex;
-        --border-offset: 2ex;
-        --border-color: var(--blue);
-        --background-color: var(--border-color);
-
         border-left: var(--border-thickness) solid var(--border-color) !important;
         padding: 0 0 0 calc(var(--border-offset) - var(--border-thickness));
         margin: 1ex 0 1ex calc(-1.0 * var(--border-offset));
