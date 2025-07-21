@@ -1,4 +1,5 @@
 @use "variables" as v;
+@use "breakpoints";
 
 @include v.headings {
     &:has(a.header-anchor) {
@@ -13,12 +14,13 @@
         text-underline-offset: .5ex;
     }
 
-    // @include media-breakpoint-up(md) {
-    &:has(a.header-anchor) {
-        margin-left: 0rem;
-    }
+    @include breakpoints.at_least_md {
 
-    // }
+        &:has(a.header-anchor) {
+            margin-left: 0rem;
+        }
+
+    }
 }
 
 @for $i from 1 through 6 {
@@ -27,19 +29,29 @@
     }
 }
 
-// @include media-breakpoint-up(md) {
+@include breakpoints.at_least_md {
 
-aside:has(ul.contents),
-aside.sticky {
-    position: sticky;
-    top: 1rem;
-    display: block;
-    height: calc(100vh - 9rem);
-    overflow-y: auto;
-    overflow-x: hidden;
+    aside:has(ul.contents),
+    aside.sticky {
+        position: sticky;
+        top: 1rem;
+        display: block;
+        height: calc(100vh - 1rem);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
 }
 
-// }
+@include breakpoints.less_than_md {
+
+    aside {
+        &:has(ul#toc.contents) {
+            display: none;
+        }
+    }
+
+}
 
 h2:has(a.header-anchor):before {
     content: counter(h2) ".";
@@ -53,23 +65,11 @@ h4:has(a.header-anchor):before {
     content: counter(h2) "." counter(h3) "." counter(h4) ".";
 }
 
-aside ul.nav {
-    flex-wrap: nowrap;
-}
-
 ul.contents {
-    &.nav {
-        padding: 0;
-    }
-
     & li {
         & {
             margin: 0 .5ex;
             padding: .5ex 0;
-        }
-
-        &.brand {
-            font-size: 1.5rem;
         }
 
         a {
@@ -102,7 +102,8 @@ ul.contents {
     & a.nav-link {
         padding: 2px 4px;
 
-        &, & p {
+        &,
+        & p {
             margin: 0 !important;
             padding: 0;
         }
