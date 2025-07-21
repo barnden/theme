@@ -3,6 +3,7 @@ import anchor from "markdown-it-anchor"
 import footnote from "markdown-it-footnote"
 import attrs from "markdown-it-attrs"
 import blocks from "./markdown/blocks.mjs"
+import dashes from "./markdown/dashes.mjs"
 
 export default async function (eleventyConfig, options = {}) {
     eleventyConfig.amendLibrary("md", mdLib => {
@@ -10,6 +11,7 @@ export default async function (eleventyConfig, options = {}) {
         mdLib.use(footnote)
         mdLib.use(attrs)
         mdLib.use(blocks)
+        mdLib.use(dashes)
         mdLib.use(anchor, {
             ...(options?.anchor ?? {}), permalink: anchor.permalink.linkInsideHeader({
                 placement: "before",
