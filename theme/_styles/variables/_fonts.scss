@@ -1,7 +1,9 @@
 $serif: "Charter", "Lora", "Times New Roman";
 $monospace: "Fantasque Sans Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$sans-serif: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", sans-serif;
 
 :root {
     --monospace: #{$monospace};
     --serif: #{$serif};
+    --sans-serif: #{$sans-serif};
 }
