@@ -57,8 +57,8 @@ blockquote {
 
         pointer-events: none;
 
-        font-family: v.$monospace;
-        text-transform: uppercase;
+        font-family: var(--serif);
+        text-transform: capitalize;
         font-weight: bold;
 
         color: var(--border-color);
@@ -138,11 +138,11 @@ blockquote {
             --background-color: #{color.scale(map.get(v.$colors, "red"), $saturation: -50%)}
         }
 
-        &:after {
+        &:before {
             content: "Example " counter(example);
         }
 
-        &.short:after {
+        &.short:before {
             content: "Ex " counter(example);
         }
     }
@@ -153,11 +153,11 @@ blockquote {
             --border-color: var(--green);
         }
 
-        &:after {
+        &:before {
             content: "Definition " counter(definition);
         }
 
-        &.short:after {
+        &.short:before {
             content: "Def. " counter(definition);
         }
     }
@@ -208,7 +208,7 @@ blockquote {
             --border-color: var(--cyan);
         }
 
-        &>h4:before {
+        &:before {
             content: "Lemma ";
         }
     }
@@ -218,11 +218,11 @@ blockquote {
             --border-color: var(--pink);
         }
 
-        &>h4:before {
+        &:before {
             content: "Theorem ";
         }
 
-        &.short>h4:before {
+        &.short:before {
             content: "Thm. ";
         }
     }
@@ -232,11 +232,11 @@ blockquote {
             --border-color: var(--yellow);
         }
 
-        &>h4:before {
+        &:before {
             content: "Proof ";
         }
 
-        &.short>h4:before {
+        &.short:before {
             content: "Pf. ";
         }
     }
